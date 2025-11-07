@@ -156,6 +156,7 @@ if (!isset($_SESSION['username'])) {
       $beli = rand(1, 10);
       $id_barang = rand(0, $jumlah);
       $harga = $harga_barang[$i] * $beli;
+      $grandtotal += $total;
     }
     ?>
   </main>
