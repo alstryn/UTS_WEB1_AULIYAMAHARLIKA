@@ -1,9 +1,41 @@
+<?php
+session_start();
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['username'])) {
+  header("Location: index.php");
+  exit;
+}
+
+
+    $kode_barang = [
+        'K001', 'K002', 'K003', 'K004', 'K005'
+    ];
+
+     $nama_barang = [
+        'Teh Pucuk',
+        'Sukro',
+        'Sprite',
+        'Coca Cola',
+        'Chitose'
+    ];
+
+    $harga_barang = [
+        3000, 2500, 5000, 6000, 4000
+    ];
+    
+    $jumlah = count($nama_barang) - 1;
+    $beli = 0;
+    $total = 0;
+    $grandtotal = 0;
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Admin - POLGAN MART</title>
+    <title>Halaman Admin</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +43,6 @@
             margin: 0;
             padding: 0;
         }
-
         /* ===== Header ===== */
         header {
             background-color: #ffffff;
@@ -97,25 +128,10 @@
             color: #555;
             font-size: 14px;
         }
-
-        button {
-            margin-top: 10px;
-            background-color: #ffffff;
-            color: #333;
-            border: 1px solid #ccc;
-            padding: 6px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #f0f0f0;
-        }
+         
     </style>
 </head>
 <body>
-
     <!-- HEADER -->
     <header>
         <div class="header-left">
@@ -131,7 +147,19 @@
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
     </header>
-    
+
+    <main>
+    <h2>Daftar Barang</h2>
+    <p>Daftar pembelian dibuat secara acak tiap kali halaman dimuat</p>
+    <?php
+    for ($i = 0; $i < rand(1, $jumlah ); $i++) {
+      $beli = rand(1, 10);
+      $id_barang = rand(0, $jumlah);
+      $harga = $harga_barang[$i] * $beli;
+    }
+    ?>
+  </main>
+
     <script>
         function logout() {
             alert("Anda telah logout!");
