@@ -1,15 +1,12 @@
 <?php
-$host = "localhost"; // Alamat server database (biasanya localhost)
-$usename = "root"; // Username login ke database
-$password = ""; // Password untuk login (biasanya untuk localhost)
-$dbname = "nama_database"; // Nama database yang ingin di akses
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $db = "db_penjualan_barang";
+    $koneksi = mysqli_connect($host, $user, $password, $db);
 
-// membuat koneksi
-$conn = new mysqli($shot, $username, $password, $dbname);
-
-//mengecek koneksi
-if ($conn->connect_error) {
-    die("koneksi gagal : " . $conn->connect_error);
-}
-echo "koneksi berhasi!";
+    if ($koneksi->connect_error) {
+        die("Koneksi gagal: " . mysqli_connect_error());
+    }
+    // echo "Koneksi berhasil";
 ?>
